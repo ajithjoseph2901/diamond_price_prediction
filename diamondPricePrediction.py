@@ -2,10 +2,6 @@ import streamlit as st
 import pickle
 import gzip
 
-# with open('model_lr.pkl', 'rb') as file:
-#     model_lr = pickle.load(file)
-# with open("DiamondPrice/model.pkl", 'rb') as file:
-#     model=pickle.load(file)
 with gzip.open('model_rf_light.pkl.gz', 'rb') as file:
     model_rf_light = pickle.load(file)
 
