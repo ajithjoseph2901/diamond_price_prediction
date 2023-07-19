@@ -1,10 +1,4 @@
 import streamlit as st
-from urllib.request import urlopen
-import cloudpickle as cp
-from urllib.request import urlopen
-
-
-
 import pickle
 import gzip
 
@@ -116,7 +110,3 @@ if st.button("Predict Price"):
                                    float(depth),float(table),float(x)*float(y)*float(z)]])
     st.write("Diamond Price is $",yhat_test)
 
-
-#%%
-
-#%%
