@@ -5,21 +5,7 @@ import gzip
 with gzip.open('model_rf_light.pkl.gz', 'rb') as file:
     model_rf_light = pickle.load(file)
 
-# loaded_pickle_object = cp.load(urlopen("https://drive.google.com/file/d/pickled_file", 'rb'))
-# model = cp.load(urlopen("https://github.com/bharathvamsi66/DiamondPricePrediction/raw/eb2b6cfd8a89382b3c532067107dddcd6605f9e3/model.pkl", 'rb'))
-
-# model = cp.load(urlopen("https://github.com/bharathvamsi66/DiamondPricePrediction/raw/eb2b6cfd8a89382b3c532067107dddcd6605f9e3/model.pkl", 'rb'))
-# https://drive.google.com/file/d/1U8vLNSox9Yi8vXO54dgZhhny-gmeR-jP/view?usp=sharing
-# model = cp.load(urlopen("https://drive.google.com/file/d/1U8vLNSox9Yi8vXO54dgZhhny-gmeR-jP/view?usp=sharing"))
-
-# model = urlopen("https://drive.google.com/file/d/1U8vLNSox9Yi8vXO54dgZhhny-gmeR-jP/view?usp=sharing").read()
-
 st.title("Diamond Price Prediction: Input Data")
-
-# if st.button("Download model"):
-#     st.write("Downloading model..")
-#     model = urlopen("https://drive.google.com/file/d/1U8vLNSox9Yi8vXO54dgZhhny-gmeR-jP/view?usp=sharing").read()
-#     st.write("Download complete")
 
 # Text Field
 st.subheader("Carat")
@@ -40,8 +26,6 @@ st.write("y:", y)
 st.subheader("z")
 z = st.text_input("Enter z")
 st.write("z:", z)
-
-#st.write("Volume:",float(x)*float(y)*float(z))
 
 
 # Radio Buttons
@@ -96,13 +80,9 @@ elif clarity=="VVS1":
 elif clarity=="IF":
     clarity=8
 
-
-# Button
-#st.subheader("Button Example")
 if st.button("Predict Price"):
     st.write("Price Predicted!")
-    st.write("volume",float(x)*float(y)*float(z))
     yhat_test = model_rf_light.predict([[float(carat),float(cut),float(color),float(clarity),
-                                   float(depth),float(table),float(x)*float(y)*float(z)]])
+                                   float(depth),float(table),float(x),float(y),float(z)]])
     st.write("Diamond Price is $",yhat_test)
 
